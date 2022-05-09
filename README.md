@@ -1,6 +1,6 @@
 ### TODO LIST_v2
 ### 1️⃣ 개요
-의- 사용 기술 스택
+- 사용 기술 스택
   - React
   - Redux
   - Json-server
