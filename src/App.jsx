@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import Modal from "./Modal";
-import {isOpen} from "./modules/modalState";
+import {isOpen, isClickOpen} from "./modules/modalState";
 import {isPost, isGet,isDelete} from "./modules/todoState";
 import axios from "axios";
 
@@ -16,6 +16,7 @@ function App() {
 
     const modalState = useSelector(state => state.modalReducer);
     const todoState  = useSelector(state => state.todoReducer);
+    const clickData  = useSelector(state => state.clickReducer);
 
     function clickOpen(){
         dispatch(isOpen());
@@ -88,7 +89,8 @@ function App() {
             <div>
                 <ul>
                     {todoState.map(data =>(
-                        <div key = {data.id}>
+                        // 클릭한 todo의 data를 store에 저장하고 갱신한다.
+                        <div key = {data.id} onClick={() => {dispatch(isClickOpen(data))}}>
                             <li>
                                 <a onClick = { clickOpen }>내용 : {data.content}</a>
                                 <br/>
@@ -105,11 +107,11 @@ function App() {
                                     삭제
                                 </button>
                                 <br/><br/>
-                                <Modal isOpen  = { modalState }
-                                       data = { data }/>
                             </li>
                         </div>
                     ))}
+                    <Modal isOpen  = { modalState }
+                           data    = { clickData } />
                 </ul>
             </div>
         </div>
