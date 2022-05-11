@@ -20,7 +20,7 @@ export function isPost(data){
     return {
         type   : POST_TODO,
         payload : {
-            content   : data.id,
+            content   : data.content,
             completed : data.completed,
             id        : data.id
         }

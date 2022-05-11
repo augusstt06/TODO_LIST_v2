@@ -53,7 +53,7 @@ function App() {
             })
             .catch(err => console.log(err));
     }
-    console.log(todoData);
+    console.log(todoState,'포스팅 전')
     const postTodo = () => {
         axios.post(process.env.REACT_APP_TEST_API,{
             content   : todoData.content,
@@ -61,9 +61,8 @@ function App() {
             id        : todoId
         })
             .then(r => {
-                console.log(r);
+                dispatch(isPost(r.data));
                 alert('작성이 완료되었습니다');
-                window.location.reload();
             })
             .catch(err =>  console.log(err))
     }
