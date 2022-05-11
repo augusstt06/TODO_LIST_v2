@@ -21,7 +21,6 @@ function App() {
         dispatch(isOpen());
     }
 
-    // api request
     let now      = new Date();
     const todoId = `${now.getMonth()}${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}`
 
@@ -46,6 +45,8 @@ function App() {
             [name] : value
         });
     }
+
+    // api request
     const getTodo = () => {
         axios.get(process.env.REACT_APP_TEST_API)
             .then(r => {
@@ -67,16 +68,7 @@ function App() {
             })
             .catch(err =>  console.log(err))
     }
-    console.log(todoState)
-    // const deleteTodo = () => {
-    //     axios.delete(`${process.env.REACT_APP_TEST_API}/${id}`)
-    //         .then(r => {
-    //             console.log(r);
-    //             console.log('tlqkffusdk')
-    //             // alert('삭제가 완료되었습니다.')
-    //         })
-    //         .catch(err => console.log(err));
-    // }
+
     useEffect(() => {
         getTodo();
     }, [])
