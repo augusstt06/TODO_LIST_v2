@@ -53,7 +53,7 @@ function App() {
             })
             .catch(err => console.log(err));
     }
-    console.log(todoState,'포스팅 전')
+
     const postTodo = () => {
         axios.post(process.env.REACT_APP_TEST_API,{
             content   : todoData.content,
