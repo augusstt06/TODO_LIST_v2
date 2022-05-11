@@ -1,5 +1,6 @@
-const ADD_TODO = 'ADD_TODO';
 const GET_TODO = 'GET_TODO';
+const POST_TODO = 'POST_TODO';
+const PUST_TODO = 'PUT_TODO';
 
 const initialState = [];
 
@@ -15,9 +16,9 @@ export function isGet(data){
         ))
     }
 }
-export function isAdd(data){
+export function isPost(data){
     return {
-        type   : ADD_TODO,
+        type   : POST_TODO,
         payload : {
             content   : data.id,
             completed : data.completed,
@@ -30,7 +31,7 @@ export function todoReducer(state = initialState, action){
     switch(action.type){
         case GET_TODO:
             return action.payload
-        case ADD_TODO:
+        case POST_TODO:
             return [
                 ...state,
                 {

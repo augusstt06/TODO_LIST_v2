@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import Modal from "./Modal";
 import {isOpen} from "./modules/modalState";
-import {isAdd, isGet} from "./modules/todoState";
+import {isPost, isGet} from "./modules/todoState";
 import axios from "axios";
 
 import styles from "./style/App.module.css";
@@ -10,9 +10,7 @@ import styles from "./style/App.module.css";
 
 
 function App() {
-    // 현재의 todo의 완료 여부, Modal open, close 상태를 객체에 담는다.
-    // const currentComplteState = useSelector(state => state.completeReducer)
-    // const currentModalState   = useSelector(state => state.modalReducer);
+    // 현재 store에 저장된 todolist의 상태를 useSelector를 이용해 객체에 담아 조회한다.
     // useDispatch를 사용해 action을 생성한다.
     const dispatch = useDispatch();
 
@@ -33,8 +31,6 @@ function App() {
         }
     }
 
-    // todoData를 굳이 app 컴포넌트에서 관리해야 하나?
-    // 이 데이터는 하위 Modal에서 모두 사용해야 하는데 그럼 redux store에 담는게 더 효율적인것이 아닌가
     const [todoData,setTodoData] = useState({
         content   : '',
         completed : false,
@@ -57,7 +53,7 @@ function App() {
             })
             .catch(err => console.log(err));
     }
-
+    console.log(todoData);
     const postTodo = () => {
         axios.post(process.env.REACT_APP_TEST_API,{
             content   : todoData.content,
