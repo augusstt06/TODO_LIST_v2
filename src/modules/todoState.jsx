@@ -27,7 +27,6 @@ export function isPost(data){
         }
     }
 }
-
 export function isDelete(data,id){
     return {
         type : DELETE_TODO,
@@ -37,8 +36,10 @@ export function isDelete(data,id){
 
 export function todoReducer(state = initialState, action){
     switch(action.type){
+
         case GET_TODO:
             return action.payload
+
         case POST_TODO:
             return [
                 ...state,
@@ -48,10 +49,13 @@ export function todoReducer(state = initialState, action){
                     id        : action.payload.id
                 }
             ]
+
         case PUT_TODO:
             return
+
         case DELETE_TODO:
             return action.payload
+
         default:
             return state
     }
