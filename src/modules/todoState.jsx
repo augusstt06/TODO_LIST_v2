@@ -1,6 +1,7 @@
-const GET_TODO = 'GET_TODO';
-const POST_TODO = 'POST_TODO';
-const PUST_TODO = 'PUT_TODO';
+const GET_TODO    = 'GET_TODO';
+const POST_TODO   = 'POST_TODO';
+const PUT_TODO    = 'PUT_TODO';
+const DELETE_TODO = 'DELETE_TODO';
 
 const initialState = [];
 
@@ -27,6 +28,13 @@ export function isPost(data){
     }
 }
 
+export function isDelete(data,id){
+    return {
+        type : DELETE_TODO,
+        payload : data.filter(data => data.id !== id)
+    }
+}
+
 export function todoReducer(state = initialState, action){
     switch(action.type){
         case GET_TODO:
@@ -40,6 +48,10 @@ export function todoReducer(state = initialState, action){
                     id        : action.payload.id
                 }
             ]
+        case PUT_TODO:
+            return
+        case DELETE_TODO:
+            return action.payload
         default:
             return state
     }

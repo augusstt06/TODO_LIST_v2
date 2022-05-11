@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import Modal from "./Modal";
 import {isOpen} from "./modules/modalState";
-import {isPost, isGet} from "./modules/todoState";
+import {isPost, isGet,isDelete} from "./modules/todoState";
 import axios from "axios";
 
 import styles from "./style/App.module.css";
@@ -63,28 +63,23 @@ function App() {
             .then(r => {
                 dispatch(isPost(r.data));
                 alert('작성이 완료되었습니다');
+
             })
             .catch(err =>  console.log(err))
     }
-    // const putTodo = () => {
-    //     axios.put(process.env.REACT_APP_TEST_API, {
-    //         content  : todoData.content,
-    //         completed : currentComplteState,
-    //         id       : todoId
-    //     })
+    console.log(todoState)
+    // const deleteTodo = () => {
+    //     axios.delete(`${process.env.REACT_APP_TEST_API}/${id}`)
     //         .then(r => {
     //             console.log(r);
-    //             alert('수정이 완료되었습니다.');
-    //             window.location.reload();
+    //             console.log('tlqkffusdk')
+    //             // alert('삭제가 완료되었습니다.')
     //         })
     //         .catch(err => console.log(err));
-
     // }
     useEffect(() => {
         getTodo();
     }, [])
-
-    console.log()
 
     return (
         <div className={ styles.Main }>
@@ -108,6 +103,15 @@ function App() {
                                 <a>
                                     완료여부 : { data.completed ? '완료' : '미완료' }
                                 </a>
+                                <br/>
+                                <button onClick={ () => {
+                                    axios.delete(`${process.env.REACT_APP_TEST_API}/${data.id}`)
+                                        .then(r => {
+                                            dispatch(isDelete(todoState, data.id))
+                                        })
+                                } }>
+                                    삭제
+                                </button>
                                 <br/><br/>
                                 <Modal isOpen  = { modalState }
                                        data = { data }/>
