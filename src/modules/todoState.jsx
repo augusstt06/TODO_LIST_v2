@@ -19,7 +19,17 @@ export function isGet(data){
 }
 export function isPost(data){
     return {
-        type   : POST_TODO,
+        type    : POST_TODO,
+        payload : {
+            content   : data.content,
+            completed : data.completed,
+            id        : data.id
+        }
+    }
+}
+export function isPut(data){
+    return {
+        type    : PUT_TODO,
         payload : {
             content   : data.content,
             completed : data.completed,
@@ -29,7 +39,7 @@ export function isPost(data){
 }
 export function isDelete(data,id){
     return {
-        type : DELETE_TODO,
+        type    : DELETE_TODO,
         payload : data.filter(data => data.id !== id)
     }
 }
@@ -37,10 +47,10 @@ export function isDelete(data,id){
 export function todoReducer(state = initialState, action){
     switch(action.type){
 
-        case GET_TODO:
+        case GET_TODO :
             return action.payload
 
-        case POST_TODO:
+        case POST_TODO :
             return [
                 ...state,
                 {
@@ -50,10 +60,17 @@ export function todoReducer(state = initialState, action){
                 }
             ]
 
-        case PUT_TODO:
-            return
+        case PUT_TODO :
+            return [
+                // ...state,
+                {
+                    content   : action.payload.content,
+                    completed : action.payload.completed,
+                    id        : action.payload.id
+                }
+            ]
 
-        case DELETE_TODO:
+        case DELETE_TODO :
             return action.payload
 
         default:
