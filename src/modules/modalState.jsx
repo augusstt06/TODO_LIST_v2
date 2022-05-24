@@ -7,28 +7,28 @@ const IS_CLICK_OPEN  = `IS_CLICK_OPEN`;
 const IS_CLICK_CLOSE = `IS_CLICK_CLOSE`;
 
 // 초기 State 정의
-const initialState_Open  = false;
-const initialState_Click = [];
+const initialState_Open      = false;
+const initialState_Click     = [];
 
 
 // action 생성 함수
 export function isOpen(){
     return {
-        type : IS_OPEN,
+        type    : IS_OPEN,
         payload : true
     }
 }
 
 export function isClose(){
     return {
-        type  : IS_CLOSE,
+        type    : IS_CLOSE,
         payload : false
     }
 }
 
 export function isClickOpen(data){
     return {
-        type : IS_CLICK_OPEN,
+        type    : IS_CLICK_OPEN,
         payload : {
             content   : data.content,
             completed : data.completed,
@@ -65,3 +65,4 @@ export function clickReducer(state = initialState_Click, action){
             return state
     }
 }
+
