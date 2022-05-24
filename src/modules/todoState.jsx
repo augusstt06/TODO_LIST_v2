@@ -37,6 +37,7 @@ export function isPut(data){
         }
     }
 }
+
 export function isDelete(data,id){
     return {
         type    : DELETE_TODO,
@@ -62,7 +63,7 @@ export function todoReducer(state = initialState, action){
 
         case PUT_TODO :
             return [
-                // ...state,
+                ...state,
                 {
                     content   : action.payload.content,
                     completed : action.payload.completed,
