@@ -17,6 +17,7 @@ export function isGet(data){
         ))
     }
 }
+
 export function isPost(data){
     return {
         type    : POST_TODO,
@@ -27,6 +28,7 @@ export function isPost(data){
         }
     }
 }
+
 export function isPut(data){
     return {
         type    : PUT_TODO,
