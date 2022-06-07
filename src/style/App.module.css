@@ -5,4 +5,86 @@
 .Main{
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Main header{
+    /*background: gray;*/
+    font-size: 20px;
+    padding: 15px;
+    font-family: 'Operator Mono', 'Source Code Pro', Menlo, Monaco, Consolas, Courier New, monospace;
+    text-align: center;
+}
+.Main .Typing{
+    /*background: aqua;*/
+    padding: 10px 0px;
+    text-align: center;
+}
+.Main .Typing input{
+    margin-right: 10px;
+    padding: 10px;
+    border: 0.5px solid gray;
+    border-radius: 20px;
+    outline: none;
+}
+.Main .Typing button{
+    padding: 10px;
+    border: 0.5px solid gray;
+    border-radius: 20px;
+}
+.Main .Typing button:hover{
+    /*background: #A2F6FF;*/
+}
+
+.Main .List{
+    width: 60%;
+    /*padding: 10px;*/
+    margin: 5px 20px 0px;
+    align-items: center;
+    border-bottom: 1.5px solid black;
+    border-top: 1.5px solid black;
+}
+.Main .List ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    /*justify-content: center;*/
+}
+.Main .List ul .Container{
+
+}
+.Main .List ul li{
+    display: flex;
+    width: 300px;
+    list-style-type: none;
+    border-bottom: 1px dashed gray;
+}
+.Main .List ul li:last-child{
+    /*border-bottom: none;*/
+}
+.Main .List ul li .Textbox{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    text-align: center;
+}
+.Main .List ul li .Textbox a{
+    margin: 5px 0px;
+}
+.Main .List ul li .Buttonbox{
+    display: flex;
+    width: 15%;
+    height: 40px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.Main .List ul li .Buttonbox button{
+    width: 80%;
+    height: 60%;
+    border: 0.5px solid gray;
+    border-radius: 50px;
 }
