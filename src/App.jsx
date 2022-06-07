@@ -78,7 +78,7 @@ function App() {
         <div className={ styles.Main }>
             <header>List</header>
 
-            <div>
+            <div className={ styles.Typing }>
                 <input placeholder = { '할 일을 입력하세요' }
                        onKeyPress  = { onKeyEnter }
                        onChange    = { typingTodo }
@@ -86,27 +86,37 @@ function App() {
                        />
                 <button onClick={postTodo}>입력</button>
             </div>
-            <div>
+            <div className={ styles.List }>
                 <ul>
                     {todoState.map(data =>(
                         // 클릭한 todo의 data를 store에 저장하고 갱신한다.
-                        <div key = {data.id} onClick={() => {dispatch(isClickOpen(data))}}>
+                        <div className = { styles.Container }
+                             key = {data.id}
+                             onClick={() => {dispatch(isClickOpen(data))}}>
                             <li>
-                                <a onClick = { clickOpen }>내용 : {data.content}</a>
-                                <br/>
-                                <a>
-                                    완료여부 : { data.completed ? '완료' : '미완료' }
-                                </a>
-                                <br/>
-                                <button onClick={ () => {
+                                <div className={ styles.Textbox }>
+                                    <a onClick = { clickOpen }>내용 : {data.content}</a>
+
+                                    <a>
+                                        완료여부 : { data.completed ? '완료' : '미완료' }
+                                    </a>
+                                </div>
+                                {/*<a onClick = { clickOpen }>내용 : {data.content}</a>*/}
+
+                                {/*<a>*/}
+                                {/*    완료여부 : { data.completed ? '완료' : '미완료' }*/}
+                                {/*</a>*/}
+                                <div className={ styles.Buttonbox}>
+                                    <button onClick={ () => {
                                     axios.delete(`${process.env.REACT_APP_TEST_API}/${data.id}`)
                                         .then(r => {
                                             dispatch(isDelete(todoState, data.id))
+                                            alert('삭제가 완료되었습니다.')
                                         })
                                 } }>
                                     삭제
                                 </button>
-                                <br/><br/>
+                                </div>
                             </li>
                         </div>
                     ))}
