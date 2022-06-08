@@ -96,16 +96,10 @@ function App() {
                             <li>
                                 <div className={ styles.Textbox }>
                                     <a onClick = { clickOpen }>내용 : {data.content}</a>
-
                                     <a>
                                         완료여부 : { data.completed ? '완료' : '미완료' }
                                     </a>
                                 </div>
-                                {/*<a onClick = { clickOpen }>내용 : {data.content}</a>*/}
-
-                                {/*<a>*/}
-                                {/*    완료여부 : { data.completed ? '완료' : '미완료' }*/}
-                                {/*</a>*/}
                                 <div className={ styles.Buttonbox}>
                                     <button onClick={ () => {
                                     axios.delete(`${process.env.REACT_APP_TEST_API}/${data.id}`)
@@ -120,6 +114,7 @@ function App() {
                             </li>
                         </div>
                     ))}
+
                     <Modal isOpen  = { modalState }
                            data    = { clickData } />
                 </ul>

@@ -1,27 +1,24 @@
 import React, {Fragment, useState, useEffect} from "react";
 import ReactModal from 'react-modal';
 import {useDispatch} from "react-redux";
-import {useSelector} from "react-redux";
 import {isClose, isClickClose} from "./modules/modalState";
 import axios from "axios";
 import {isPut} from "./modules/todoState";
 
-import styles from './style/Modal.module.css';
-
 function Modal({ isOpen, data }){
     const dispatch = useDispatch();
-    // const modalData = useSelector(state => state.todoReducer).filter(data1 => data1.id === data.id)
-    // console.log(modalData)
     function clickClose(){
         dispatch(isClose());
         dispatch(isClickClose())
     }
     const [modify, setModify]     = useState(false);
+
     const [todoData, setTodoData] = useState({
         content : data.content,
         completed : data.completed,
         id : data.id
     });
+
     const changeModify = () => {
         setModify(!modify);
     }
@@ -67,7 +64,7 @@ function Modal({ isOpen, data }){
                     ariaHideApp={false}>
             {!modify ?
             <Fragment>
-                <div className = { styles.Modal }>
+                <div>
                     <h3>{data.content}</h3>
                     <a>완료 여부</a>
                     <a>{data.completed ? '👍' : '👎'}</a>
