@@ -11,14 +11,12 @@
     justify-content: center;
 }
 .Main header{
-    /*background: gray;*/
     font-size: 20px;
     padding: 15px;
     font-family: 'Operator Mono', 'Source Code Pro', Menlo, Monaco, Consolas, Courier New, monospace;
     text-align: center;
 }
 .Main .Typing{
-    /*background: aqua;*/
     padding: 10px 0px;
     text-align: center;
 }
@@ -51,7 +49,6 @@
     flex-direction: column;
     align-items: center;
     height: 100%;
-    /*justify-content: center;*/
 }
 .Main .List ul .Container{
 
@@ -63,7 +60,6 @@
     border-bottom: 1px dashed gray;
 }
 .Main .List ul li:last-child{
-    /*border-bottom: none;*/
 }
 .Main .List ul li .Textbox{
     display: flex;
