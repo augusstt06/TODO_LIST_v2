@@ -32,9 +32,9 @@
 [//]: # (Redux Middle Ware 사용, Rerendering시기 명확히)
 [//]: # (컴포넌트별로 api 요청을 하게되면 코드가 길고 무거워짐 => redux를 통한 모듈화)
 ### 4️⃣ Todo List v3 제작시 반영점
-1. API요청시 비동기 / 넌블로킹 처리
-   1. 현재 api요청을 하는 컴포넌트는 동기 / 블로킹 코드로 작성이 되어 있다.
-   > api요청을 하고 response를 받아오기 전까지 다른 작업을 수행할수 있도록 비동기 / 넌블로킹 코드로 수정한다 
+1. API요청시 비동기 처리
+   1. 현재 api요청을 하는 컴포넌트는 동기로 작성이 되어 있다.
+   > api요청을 하고 response를 받아오기 전까지 다른 작업을 수행할수 있도록 비동기 코드로 수정한다 
 2. Redux MiddleWare 사용
    1. api요청과 같은 비동기 처리 작업을 수행하기 위해 MiddleWare 사용
    2. Redux-Saga 와 Redux-Thunk 중 1개 사용할 예정
